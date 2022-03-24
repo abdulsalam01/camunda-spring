@@ -63,6 +63,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <layout>ZIP</layout>
+                    <mainClass>com.project.camunda.java.spring.WebApp</mainClass>
                 </configuration>
                 <executions>
                     <execution>
@@ -71,7 +72,7 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>            
         </plugins>
     </build>
 </project>

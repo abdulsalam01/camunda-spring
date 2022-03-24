@@ -3,6 +3,7 @@ services:
     camunda-spring:
         container_name: camunda-sping
         build:
+            context: ./
             dockerfile: Dockerfile
         ports:
             - 8090:8090
