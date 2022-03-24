@@ -1,0 +1,13 @@
+version: '2'
+services:
+    camunda-spring:
+        container_name: camunda-sping
+        build:
+            dockerfile: Dockerfile
+        ports:
+            - 8090:8090
+        networks:
+            - spring-cloud-network
+networks:
+    spring-cloud-network:
+        driver: bridge
