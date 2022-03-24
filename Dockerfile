@@ -5,7 +5,7 @@ FROM openjdk:11
 # copy all source
 #COPY . /camunda-spring
 # define jar file
-ARG JAR_FILE=target/*.jar
+ARG JAR_FILE=target/camunda-java-spring-1.0-SNAPSHOT.jar
 # alias as app.jar
 COPY ${JAR_FILE} app.jar
 # run the jar
