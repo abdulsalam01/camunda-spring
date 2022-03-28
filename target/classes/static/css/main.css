@@ -1,3 +1,7 @@
 h2 {
-    color: red;
+    font-weight: 700;
+}
+
+img {
+    object-fit: cover;
 }
