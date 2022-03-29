@@ -29,7 +29,7 @@ and open the template in the editor.
                 <img th:src="@{/img/scooter.jpg}" class="img-fluid" width="90%">
             </div>
             <div class="col-7 pt-4 pl-3 border-top">
-                <form action="">
+                <form action="#" method="post" th:object="${insurance}">
                     <div class="row mb-3">
                         <label for="#" class="col-sm-6 col-form-label fw-bold">Desired start of insurance:</label>
                         <div class="col-sm-6">
@@ -42,11 +42,11 @@ and open the template in the editor.
                         <label for="#" class="col-sm-6 col-form-label fw-bold">With partial coverage?</label>
                         <div class="col-sm-6 pt-2">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input class="form-check-input" type="radio" name="option_1" th:value="${option[0]}" th:field="*{option_1}">
                                 <label class="form-check-label" for="#">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input class="form-check-input" type="radio" name="option_1" th:value="${option[1]}" th:field="*{option_1}">
                                 <label class="form-check-label" for="#">No</label>
                             </div>
                         </div>
@@ -55,11 +55,11 @@ and open the template in the editor.
                         <label for="#" class="col-sm-6 col-form-label fw-bold">Will the vehicle be used by a young driver (under 18 years old)?</label>
                         <div class="col-sm-6 pt-2">
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                <input class="form-check-input" type="radio" name="option_2" th:value="${option[2]}" th:field="*{option_2}">
                                 <label class="form-check-label" for="#">Yes</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                <input class="form-check-input" type="radio" name="option_2" th:value="${option[1]}" th:field="*{option_2}">
                                 <label class="form-check-label" for="#">No</label>
                             </div>
                         </div>
@@ -67,15 +67,41 @@ and open the template in the editor.
                     <div class="row mt-3 mb-3">
                         <label for="#" class="col-sm-9 col-form-label fw-bold">Your contribution for the above period:</label>
                         <div class="col-sm-3 pt-2">
-                            <p class="fw-bold">00 EUR</p>
+                            <p id="result" class="fw-bold">00 EUR</p>
                         </div>
                     </div>
+                    <input type="button" value="Submit" onclick="madeAjaxCall()"/>
                 </form>
             </div>
         </div>
     </div>
-    <!-- <p th:text="'Welcome to app ' + ${message} + '!'"></p>
-    <button class="btn btn-primary">Submit</button> -->
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        function madeAjaxCall() {
+        	const opt1 = $("input[name='option_1']:checked").val();
+        	const opt2 = $("input[name='option_2']:checked").val();
+        	const params = `option_1=${opt1}&option_2=${opt2}`;
+
+            $.ajax({
+                type: "post",
+                url: "/insurance",
+                cache: false,
+                data: params,
+                success: function(response) {
+                    //  $('#result').html("");
+                    var obj = response;
+                    $('#result').html(obj.result+" EUR");
+                    //$('#result').html("First Name:- " + obj.firstName +"</br>Last Name:- " + obj.lastName);
+                },
+                error: function() {
+                    alert('Error while request..');
+                }
+            });
+        }
+    </script>
+
 </body>
 
 </html>

@@ -1,6 +1,7 @@
 package com.project.camunda.java.spring;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.boot.SpringApplication;
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -11,7 +12,12 @@ import org.springframework.boot.SpringApplication;
  *
  * @author abdulsalam
  */
+
 @SpringBootApplication
+@ComponentScan({ 
+		"com.project.camunda.java.spring", 
+		"service" 
+})
 public class WebApp {
     public static void main(String[] args) {
         SpringApplication.run(WebApp.class, args);
