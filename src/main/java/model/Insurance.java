@@ -1,5 +1,6 @@
 package model;
 
+// menggambarkan struktur data
 public class Insurance {
 
 	  private String option_1;

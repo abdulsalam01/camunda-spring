@@ -19,6 +19,7 @@ import helper.DateConvert;
 import model.Insurance;
 
 @Controller
+// fungsi proses dari web service
 public class WebService {
 	@RequestMapping(value = "/insurance", method = RequestMethod.POST)
     public @ResponseBody Insurance add(HttpServletRequest request, HttpServletResponse response) throws Exception {
@@ -29,6 +30,7 @@ public class WebService {
 		insurance.setOption_1(option_1);
 		insurance.setOption_2(option_2);
 		
+		// perhitungan nilai
 		double total = Double.parseDouble(insurance.getOption_1()) + 
 				Double.parseDouble(insurance.getOption_2());
 		

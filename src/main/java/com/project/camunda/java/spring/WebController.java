@@ -34,11 +34,6 @@ import helper.DateConvert;
 import model.Insurance;
 import service.Constant;
 
-/**
- *
- * @author abdulsalam
- */
-
 @Controller
 public class WebController {    
     

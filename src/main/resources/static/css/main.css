@@ -5,3 +5,9 @@ h2 {
 img {
     object-fit: cover;
 }
+
+select,
+option,
+.form-check-label {
+    font-size: 14px !important;
+}

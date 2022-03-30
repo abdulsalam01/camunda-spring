@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+//fungsi untuk mengambil tanggal
 public class DateConvert {
 	
 	public static List<String> getDate() {
@@ -21,7 +22,7 @@ public class DateConvert {
 		    cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));
 		    String last_month = last_date.format(cal.getTime());
 		    		    
-		    allDates.add(first_month+"-"+last_month);
+		    allDates.add(first_month+" - "+last_month);
 		    cal.add(Calendar.MONTH, +1);
 		    cal.set(Calendar.DATE, 1);
 		}
